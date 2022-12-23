@@ -26,15 +26,15 @@ public class UIManager : MonoBehaviour
 
     public void EnableUpgradePanel()
     {
-        TowerPanel.Instance.description.enabled = false;
+        TowerPanel.Instance.Description.enabled = false;
         UpgradePanel.Instance.gameObject.SetActive(true);
     }
 
     public void DisableUpgradePanel()
     {
-        TowerPanel.Instance.description.enabled = true;
-        TowerPanel.Instance.description.sprite = null;
+        TowerPanel.Instance.Description.enabled = true;
+        TowerPanel.Instance.Description.sprite = null;
         UpgradePanel.Instance.gameObject.SetActive(false);
-        GameManager.Instance.RangeCircle.gameObject.SetActive(true);
+        GameManager.Instance.RangeCircle.gameObject.SetActive(false);
     }
 }

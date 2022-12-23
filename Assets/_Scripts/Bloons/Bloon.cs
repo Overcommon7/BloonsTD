@@ -1,9 +1,11 @@
 using MyBox;
+using MyBox.Internal;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 [Serializable]
 public enum BloonType
@@ -37,6 +39,26 @@ public struct BloonValues
     public float timeSinceSpawn;
     public int currentWaypoint;
     public float distanceTraveled;
+
+    public void SetCustomSpawnValues(ref BloonValues values)
+    {
+        //float value = (BloonManager.Instance.BloonSpeeds[bloonType].speed / BloonManager.Instance.BloonSpeeds[values.bloonType].speed);
+       // Debug.Log(value);
+        Debug.Log(values.begin);
+        begin = values.begin;
+        timeSinceSpawn = values.timeSinceSpawn;
+        currentWaypoint = values.currentWaypoint;
+        distanceTraveled = values.distanceTraveled;
+        distanceTraveled -= values.distanceTraveled * (BloonManager.Instance.BloonSpeeds[bloonType].speed / BloonManager.Instance.BloonSpeeds[values.bloonType].speed);
+
+        Debug.Log((Time.time - begin) /
+           (GameManager.Instance.Waypoints[currentWaypoint].speed * BloonManager.Instance.BloonSpeeds[bloonType].time));
+    }
+
+    public override string ToString()
+    {
+        return begin.ToString() + " " + timeSinceSpawn.ToString() + " " + distanceTraveled.ToString() + " " + currentWaypoint.ToString();
+    }
 }
 public class Bloon : MonoBehaviour
 {
@@ -44,12 +66,10 @@ public class Bloon : MonoBehaviour
                     
     public bool IsFrozen { get => bloonValues.isFrozen; }
     public float DistanceTraveled { get => bloonValues.distanceTraveled; }
-
     void Start()
     {
         bloonValues.begin = Time.time;
         bloonValues.timeSinceSpawn = bloonValues.begin;
-        transform.position = GameManager.Instance.Waypoints[bloonValues.currentWaypoint].position;
     }
 
     void Update()
@@ -65,6 +85,7 @@ public class Bloon : MonoBehaviour
             {
                 int value = (int)bloonValues.bloonType - (bloonValues.bloonType == BloonType.White ? 1 : 0);
                 Player.Instance.PlayerValues.Lives -= value;
+                print(bloonValues.distanceTraveled);
                 Destroy(gameObject);
             }
             bloonValues.begin = Time.time;
@@ -74,6 +95,7 @@ public class Bloon : MonoBehaviour
         transform.position = Vector2.Lerp(GameManager.Instance.Waypoints[bloonValues.currentWaypoint].position,
                                           GameManager.Instance.Waypoints[bloonValues.currentWaypoint + 1].position,
                                           fraction);
+
         bloonValues.distanceTraveled = BloonManager.Instance.BloonSpeeds[bloonValues.bloonType].speed * (Time.time - bloonValues.timeSinceSpawn);
     }
 
@@ -106,6 +128,8 @@ public class Bloon : MonoBehaviour
     {
         switch (bloonValues.bloonType)
         {
+            case BloonType.Popped:
+                return;
             case BloonType.Red:
                 bloonValues.bloonType -= 1;
                 Instantiate(BloonManager.Instance.BloonSprites[BloonType.Popped].transform).position = transform.position;
@@ -117,16 +141,26 @@ public class Bloon : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = BloonManager.Instance.BloonSprites[bloonValues.bloonType - 1].sprite;
                 Vector2 S = GetComponent<SpriteRenderer>().sprite.bounds.size;
                 GetComponent<BoxCollider2D>().size = S;
+                bloonValues.distanceTraveled -=
+                    bloonValues.distanceTraveled * (BloonManager.Instance.BloonSpeeds[bloonValues.bloonType].speed / BloonManager.Instance.BloonSpeeds[bloonValues.bloonType - 1].speed);
                 bloonValues.bloonType -= 1;
                 Instantiate(BloonManager.Instance.BloonSprites[BloonType.Popped].transform, transform).position = transform.position;
                 break;
             case BloonType.Black:
             case BloonType.White:
-                Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform).position = transform.position.OffsetX(0.1f);
-                Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform).position = transform.position.OffsetY(0.1f);
+                var t = Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform);
+                t.GetComponent<Bloon>().bloonValues.SetCustomSpawnValues(ref bloonValues);
+                t = Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform);
+                t.GetComponent<Bloon>().bloonValues.SetCustomSpawnValues(ref bloonValues);
+                ////print(t.GetComponent<Bloon>().bloonValues.ToString() +  " - " + bloonValues.ToString());
+                //print((Time.time - bloonValues.begin) / (GameManager.Instance.Waypoints[bloonValues.currentWaypoint].speed * BloonManager.Instance.BloonSpeeds[bloonValues.bloonType].time));
+                //print((Time.time - t.GetComponent<Bloon>().bloonValues.begin) / (GameManager.Instance.Waypoints[t.GetComponent<Bloon>().bloonValues.currentWaypoint].speed * BloonManager.Instance.BloonSpeeds[t.GetComponent<Bloon>().bloonValues.bloonType].time));
+
+
                 Instantiate(BloonManager.Instance.BloonSprites[BloonType.Popped].transform).position = transform.position;
                 Destroy(gameObject);
                 break;
         }
+        Player.Instance.PlayerValues.Money++;
     }
 }

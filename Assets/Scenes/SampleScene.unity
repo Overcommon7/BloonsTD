@@ -280,7 +280,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &12495947
 MonoBehaviour:
@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 70856197}
   - component: {fileID: 70856196}
   - component: {fileID: 70856195}
+  - component: {fileID: 70856198}
   m_Layer: 5
   m_Name: BombShooter(Button)
   m_TagString: Untagged
@@ -433,6 +434,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70856193}
   m_CullTransparentMesh: 1
+--- !u!114 &70856198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70856193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: EnableDescriptionPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: BombTower
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: DisableDescriptionPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DartTower
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &101920084
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +511,7 @@ Transform:
   - {fileID: 1631900832}
   - {fileID: 2056839617}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &115436546
 GameObject:
@@ -743,7 +789,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &319592227
 MonoBehaviour:
@@ -1091,7 +1137,7 @@ RectTransform:
   m_Children:
   - {fileID: 1131364329}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1566,7 +1612,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &445516393
 MonoBehaviour:
@@ -2858,6 +2904,7 @@ GameObject:
   - component: {fileID: 759018596}
   - component: {fileID: 759018595}
   - component: {fileID: 759018594}
+  - component: {fileID: 759018597}
   m_Layer: 5
   m_Name: TackShooter(Button)
   m_TagString: Untagged
@@ -2967,6 +3014,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759018592}
   m_CullTransparentMesh: 1
+--- !u!114 &759018597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759018592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: EnableDescriptionPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: TackShooter
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: DisableDescriptionPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DartTower
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &762445129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,7 +3309,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b25d45c804a35394b91c0789b9a770a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.83, y: 0.74}
@@ -3234,13 +3326,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777512948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.723, y: -0.416, z: 0}
+  m_LocalPosition: {x: -4.05, y: 4.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1347443716}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &777512952
 BoxCollider2D:
@@ -3259,7 +3351,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.83, y: 0.74}
+    oldSize: {x: 0.83, y: 0.78}
     newSize: {x: 0.83, y: 0.74}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4214,7 +4306,7 @@ Transform:
   m_Children:
   - {fileID: 994398900}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1045376485
 GameObject:
@@ -4245,7 +4337,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113704111
 GameObject:
@@ -5442,63 +5534,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1284587828
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.357598
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2724713
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582899, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 642549846679582902, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
-      propertyPath: m_Name
-      value: Green
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 55aafb6e8e118ee4fa830f1f223da60e, type: 3}
 --- !u!1 &1294290599
 GameObject:
   m_ObjectHideFlags: 0
@@ -6132,7 +6167,7 @@ Transform:
   m_Children:
   - {fileID: 414577568}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1533613876
 MonoBehaviour:
@@ -6309,7 +6344,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1677936120
 MonoBehaviour:
@@ -6323,6 +6358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a894d4d8df480d4884cf144d9d75a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  red: 0
+  blue: 0
+  green: 0
+  yellow: 0
+  black: 0
+  white: 0
 --- !u!1 &1687302876
 GameObject:
   m_ObjectHideFlags: 0
@@ -6775,6 +6816,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: {fileID: 1348237055}
+  dartMonkey: {fileID: 21300000, guid: 9cc3fb2235b4bed41bd8d27a40a271a0, type: 3}
+  tackShooter: {fileID: 21300000, guid: 9c3d5202633ac484a8c8dbeb40e5d096, type: 3}
+  iceTower: {fileID: 21300000, guid: 96d1ed4f05072024db54bcb59234c398, type: 3}
+  bombShooter: {fileID: 21300000, guid: f6a9402e9a34c8e46a2b7ace8ee4eb90, type: 3}
+  superMonkey: {fileID: 21300000, guid: 15141e7fd487c694fb3c428fdff9e671, type: 3}
 --- !u!1 &1891062941
 GameObject:
   m_ObjectHideFlags: 0
@@ -7399,6 +7445,7 @@ GameObject:
   - component: {fileID: 2031473866}
   - component: {fileID: 2031473865}
   - component: {fileID: 2031473864}
+  - component: {fileID: 2031473867}
   m_Layer: 5
   m_Name: SuperMonkey(Button)
   m_TagString: Untagged
@@ -7508,6 +7555,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031473862}
   m_CullTransparentMesh: 1
+--- !u!114 &2031473867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031473862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: EnableDescriptionPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: SuperMonkey
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: DisableDescriptionPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DartTower
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2034217495
 GameObject:
   m_ObjectHideFlags: 0
@@ -7520,6 +7612,7 @@ GameObject:
   - component: {fileID: 2034217499}
   - component: {fileID: 2034217498}
   - component: {fileID: 2034217497}
+  - component: {fileID: 2034217500}
   m_Layer: 5
   m_Name: IceTower(Button)
   m_TagString: Untagged
@@ -7629,6 +7722,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034217495}
   m_CullTransparentMesh: 1
+--- !u!114 &2034217500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034217495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: EnableDescriptionPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: IceTower
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: DisableDescriptionPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DartTower
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2056839615
 GameObject:
   m_ObjectHideFlags: 0
@@ -7836,6 +7974,7 @@ GameObject:
   - component: {fileID: 2061104873}
   - component: {fileID: 2061104872}
   - component: {fileID: 2061104871}
+  - component: {fileID: 2061104874}
   m_Layer: 5
   m_Name: DartMonkey(Button)
   m_TagString: Untagged
@@ -7945,6 +8084,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061104869}
   m_CullTransparentMesh: 1
+--- !u!114 &2061104874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061104869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: EnableDescriptionPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DartTower
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1835112864}
+          m_TargetAssemblyTypeName: TowerPanel, Assembly-CSharp
+          m_MethodName: DisableDescriptionPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DartTower
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2124921080
 GameObject:
   m_ObjectHideFlags: 0
