@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BloonManager : MonoBehaviour
 {
-    public static BloonManager Instance;
-    public Dictionary<BloonType, BloonVariables> BloonSpeeds = null;
-    public Dictionary<BloonType, SpriteRenderer> BloonSprites = null; 
     [SerializeField] SpriteRenderer BlackBloon;
     [SerializeField] SpriteRenderer WhiteBloon;
     [SerializeField] SpriteRenderer YellowBloon;
@@ -14,6 +11,10 @@ public class BloonManager : MonoBehaviour
     [SerializeField] SpriteRenderer BlueBloon;
     [SerializeField] SpriteRenderer RedBloon;
     [SerializeField] SpriteRenderer PoppedBloon;
+
+    public static BloonManager Instance;
+    public static Dictionary<BloonType, BloonVariables> BloonSpeeds = null;
+    public static Dictionary<BloonType, SpriteRenderer> BloonSprites = null; 
 
     private void Awake()
     {
@@ -36,13 +37,13 @@ public class BloonManager : MonoBehaviour
 
         BloonSprites = new Dictionary<BloonType, SpriteRenderer>()
         {
-            {BloonType.Popped, PoppedBloon },
-            {BloonType.Red,    RedBloon},
-            {BloonType.Blue,   BlueBloon},
-            {BloonType.Green,  GreenBloon},
-            {BloonType.Yellow, YellowBloon},
-            {BloonType.Black,  BlackBloon},
-            {BloonType.White,  WhiteBloon}
+            {BloonType.Popped, PoppedBloon},
+            { BloonType.Red,    RedBloon},
+            { BloonType.Blue,   BlueBloon},
+            { BloonType.Green,  GreenBloon},
+            { BloonType.Yellow, YellowBloon},
+            { BloonType.Black,  BlackBloon},
+            { BloonType.White,  WhiteBloon}
         };
     }
 }

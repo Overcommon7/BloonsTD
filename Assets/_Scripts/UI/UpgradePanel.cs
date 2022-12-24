@@ -62,31 +62,41 @@ public class UpgradePanel : MonoBehaviour
 
     public void OnMouseButtonDown(ref RaycastHit2D hit)
     {
-        if(hit.transform) SelectedTower = hit.transform.GetComponent<Tower>();
-        else SelectedTower = null;
-
-        if (SelectedTower == null)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                foreach (var button in upgradeButtons)
-                    button.gameObject.SetActive(false);
-                sellButton.gameObject.SetActive(false);
-                GameManager.Instance.RangeCircle.gameObject.SetActive(false);
-                popCount.text = string.Empty;
-                TowerPanel.Instance.Description.gameObject.SetActive(true);
-            }
-            return;
+            if (hit.transform) SelectedTower = hit.transform.GetComponent<Tower>();
+            else SelectedTower = null;
         }
+           
+        if (SelectedTower == null) NoTowerSelected();
+        else TowerSelected(); 
+    }
 
+    private void NoTowerSelected()
+    {
+        foreach (var button in upgradeButtons)
+            button.gameObject.SetActive(false);
+        sellButton.gameObject.SetActive(false);
+        GameManager.Instance.RangeCircle.gameObject.SetActive(false);
+        popCount.text = string.Empty;
+        TowerPanel.Instance.Description.gameObject.SetActive(true);
+    }
+
+    private void TowerSelected()
+    {
         for (int i = 0; i < upgradeButtons.Count; i++)
         {
             upgradeButtons[i].gameObject.SetActive(true);
             components[i].name.text = SelectedTower.Upgrades[i].name;
-            components[i].price.text = "Buy For: " + SelectedTower.Upgrades[i].price.ToString();
+            if (!SelectedTower.TowerVariables.upgraded[i]) components[i].price.text = "Buy For: " + SelectedTower.Upgrades[i].price.ToString();
+            else components[i].price.text = "Already Bought";
             components[i].icon.sprite = GetSprite(SelectedTower.TowerType, i);
-            if (Player.Instance.PlayerValues.Money < SelectedTower.Upgrades[i].price) upgradeButtons[i].GetComponent<Image>().color = Defines.RED;
-            else upgradeButtons[i].GetComponent<Image>().color = Defines.GREEN;
+            if (Player.Instance.PlayerValues.Money < SelectedTower.Upgrades[i].price && !SelectedTower.TowerVariables.upgraded[i]) 
+                upgradeButtons[i].image.color = Defines.RED;
+            else upgradeButtons[i].image.color = Defines.GREEN;
+
+            upgradeButtons[i].interactable = !SelectedTower.TowerVariables.upgraded[i];
+
         }
 
         sellButton.gameObject.SetActive(true);
@@ -118,8 +128,19 @@ public class UpgradePanel : MonoBehaviour
         }
     }
 
-    public void ApplyUpgrade()
+    public void ApplyUpgrade(int upgradeIndex)
     {
-        
+        SelectedTower.ApplyUpgrade(upgradeIndex);
+        TowerSelected();
+    }
+
+    public void SellTower()
+    {
+        if (SelectedTower == null) return;
+
+        Player.Instance.PlayerValues.Money += SelectedTower.TowerVariables.sellPrice;
+        Destroy(SelectedTower.gameObject);
+        SelectedTower = null;
+        NoTowerSelected();
     }
 }

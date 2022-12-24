@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2805149336850487862}
   m_Layer: 0
   m_Name: Black
-  m_TagString: Untagged
+  m_TagString: Bloons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,8 +101,7 @@ MonoBehaviour:
   bloonValues:
     bloonType: 5
     isFrozen: 0
-    begin: 0
-    timeSinceSpawn: 0
+    timer: 0
     currentWaypoint: 0
     distanceTraveled: 0
 --- !u!61 &-2805149336850487862

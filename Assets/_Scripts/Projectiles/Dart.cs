@@ -10,14 +10,14 @@ public static class Dart
     }
     public static void OnTriggerEnter(Bloon bloon, Projectile projectile)
     { 
-        if (bloon.IsFrozen)
+        if ((bloon.IsFrozen) || projectile.ProjectileValues.pierce == 0)
         {
             Object.Destroy(projectile.gameObject);
             return;
         }
 
         projectile.ProjectileValues.pierce--;
-        if (projectile.ProjectileValues.pierce == 0) 
+        if (projectile.ProjectileValues.pierce == 0)
             Object.Destroy(projectile.gameObject);
         bloon.Pop();
     }

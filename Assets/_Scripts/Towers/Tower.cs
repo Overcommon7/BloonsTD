@@ -43,13 +43,16 @@ public struct TowerVariables
 
     [ReadOnly] public int sellPrice;
     [ReadOnly] public int popCount;
-    [ReadOnly] public float attackSpeed;
     [ReadOnly] public float range;
+    [NonSerialized] public float timeSinceLastShot;
 
     public bool[] upgraded;
 
-    [NonSerialized] public float timeSinceLastShot;
+    
 }
+
+
+
 
 public class Tower : MonoBehaviour
 {
@@ -79,10 +82,53 @@ public class Tower : MonoBehaviour
             }
         }
     }
+    public int Price 
+    { 
+        get
+        {
+            switch (towerType)
+            {
+                case TowerType.DartTower:
+                    return DartMonkey.Price;
+                case TowerType.TackShooter:
+                    return TackShooter.Price;
+                case TowerType.IceTower:
+                    return IceTower.Price;
+                case TowerType.BombTower:
+                    return BombShooter.Price;
+                case TowerType.SuperMonkey:
+                    return SuperMonkey.Price;
+                default:
+                    return 0;
+            }
+        } 
+    }
+    public float Range
+    {
+        get
+        {
+            switch (towerType)
+            {
+                case TowerType.DartTower:
+                    return DartMonkey.Range;
+                case TowerType.TackShooter:
+                    return TackShooter.Range;
+                case TowerType.IceTower:
+                    return IceTower.Range;
+                case TowerType.BombTower:
+                    return BombShooter.Range;
+                case TowerType.SuperMonkey:
+                    return SuperMonkey.Range;
+                default:
+                    return 0;
+            }
+        }
+    }
     void Awake()
     {
         towerVariables.upgraded = new bool[2] { false, false };
         towerVariables.projectile = GetComponentInChildren<Projectile>();
+        towerVariables.projectile.owner = this;
         towerVariables.projectile.gameObject.SetActive(false);
         switch (towerType)
         {
@@ -112,16 +158,16 @@ public class Tower : MonoBehaviour
                 DartMonkey.Update(ref towerVariables, transform);
                 break;
             case TowerType.TackShooter:
-                TackShooter.Update(ref towerVariables);
+                TackShooter.Update(ref towerVariables, transform);
                 break;
             case TowerType.IceTower:
-                IceTower.Update(ref towerVariables);
+                IceTower.Update(ref towerVariables, transform);
                 break;
             case TowerType.BombTower:
-                BombShooter.Update(ref towerVariables);
+                BombShooter.Update(ref towerVariables, transform);
                 break;
             case TowerType.SuperMonkey:
-                SuperMonkey.Update(ref towerVariables);
+                SuperMonkey.Update(ref towerVariables, transform);
                 break;
         }
     }
@@ -155,8 +201,8 @@ public class Tower : MonoBehaviour
         float maxDistance = 0;
         foreach (var hit in Physics2D.CircleCastAll(transform.position, values.range * 0.5f, Vector2.zero))
         {
-            Bloon? bloon = hit.transform.GetComponent<Bloon>();
-            if (bloon == null) continue;
+            if (!hit.transform.CompareTag("Bloons")) continue;
+            Bloon bloon = hit.transform.GetComponent<Bloon>();
             if (maxDistance > bloon.DistanceTraveled) continue;
             target = bloon;
             maxDistance = bloon.DistanceTraveled;

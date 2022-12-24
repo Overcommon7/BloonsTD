@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     public PlayerValues PlayerValues;
+    public bool HasTower = false;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        PlayerValues.Money = 650; 
+        PlayerValues.Money = 100000; 
         PlayerValues.Lives = 40; 
     }
 
@@ -49,9 +50,15 @@ public class Player : MonoBehaviour
     void HandleMouseInput()
     {
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
-
         var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
-        UIManager.Instance.EnableUpgradePanel();
-        UpgradePanel.Instance.OnMouseButtonDown(ref hit);
+        if (HasTower)
+        {
+            TowerPanel.Instance.CreateTower(ref hit);
+        }
+        else
+        {
+            UIManager.Instance.EnableUpgradePanel();
+            UpgradePanel.Instance.OnMouseButtonDown(ref hit);
+        }
     }
 }

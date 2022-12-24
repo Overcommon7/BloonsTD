@@ -25,12 +25,12 @@ public class RoundManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (red) Instantiate(BloonManager.Instance.BloonSprites[BloonType.Red].transform).position = start;
-        if (blue) Instantiate(BloonManager.Instance.BloonSprites[BloonType.Blue].transform).position = start;
-        if (green) Instantiate(BloonManager.Instance.BloonSprites[BloonType.Green].transform).position = start;
-        if (yellow) Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform).position = start;
-        if (white) Instantiate(BloonManager.Instance.BloonSprites[BloonType.White].transform).position = start;
-        if (black) Instantiate(BloonManager.Instance.BloonSprites[BloonType.Black].transform).position = start;
+        if (red) Instantiate(BloonManager.BloonSprites[BloonType.Red].transform).position = start;
+        if (blue) Instantiate(BloonManager.BloonSprites[BloonType.Blue].transform).position = start;
+        if (green) Instantiate(BloonManager.BloonSprites[BloonType.Green].transform).position = start;
+        if (yellow) Instantiate(BloonManager.BloonSprites[BloonType.Yellow].transform).position = start;
+        if (white) Instantiate(BloonManager.BloonSprites[BloonType.White].transform).position = start;
+        if (black) Instantiate(BloonManager.BloonSprites[BloonType.Black].transform).position = start;
 
 
         red = false;
