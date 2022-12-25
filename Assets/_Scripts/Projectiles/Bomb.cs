@@ -14,6 +14,7 @@ public static class Bomb
         projectile.GetComponent<Animator>().enabled = true;
         if (bloon.Type != BloonType.Black)
             bloon.Pop();
+        projectile.owner.PopCount++;
     }
 }
 

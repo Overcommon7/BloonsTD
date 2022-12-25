@@ -43,17 +43,11 @@ public struct TowerVariables
 
     [ReadOnly] public int sellPrice;
     [ReadOnly] public int popCount;
-    [ReadOnly] public float range;
+     public float range;
     [NonSerialized] public float timeSinceLastShot;
 
     public bool[] upgraded;
-
-    
 }
-
-
-
-
 public class Tower : MonoBehaviour
 {
     [SerializeField] TowerType towerType = TowerType.DartTower;
@@ -61,6 +55,7 @@ public class Tower : MonoBehaviour
 
     public TowerType TowerType { get => towerType; }
     public TowerVariables TowerVariables { get => towerVariables; }
+    public int PopCount { get => towerVariables.popCount; set => towerVariables.popCount = value; }
     public Upgrade[] Upgrades
     {
         get

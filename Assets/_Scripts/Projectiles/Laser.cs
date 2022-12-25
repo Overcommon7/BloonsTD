@@ -14,5 +14,6 @@ public static class Laser
         if (projectile.ProjectileValues.pierce == 0)
             Object.Destroy(projectile.gameObject);
         bloon.Pop();
+        projectile.owner.PopCount++;
     }
 }

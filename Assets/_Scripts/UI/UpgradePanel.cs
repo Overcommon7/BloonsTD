@@ -82,6 +82,12 @@ public class UpgradePanel : MonoBehaviour
         TowerPanel.Instance.Description.gameObject.SetActive(true);
     }
 
+    private void FixedUpdate()
+    {
+        if (SelectedTower != null) 
+            popCount.text = "Pop Count: " + SelectedTower.PopCount.ToString();
+    }
+
     private void TowerSelected()
     {
         for (int i = 0; i < upgradeButtons.Count; i++)
@@ -101,7 +107,7 @@ public class UpgradePanel : MonoBehaviour
 
         sellButton.gameObject.SetActive(true);
         sellButton.GetComponentInChildren<TextMeshProUGUI>().text = "Sell For: " + SelectedTower.TowerVariables.sellPrice.ToString();
-        popCount.text = "Pop Count: " + SelectedTower.TowerVariables.popCount.ToString();
+        popCount.text = "Pop Count: " + SelectedTower.PopCount.ToString();
         float range = SelectedTower.TowerVariables.range;
         TowerPanel.Instance.Description.gameObject.SetActive(false);
         if (range <= 0) return;

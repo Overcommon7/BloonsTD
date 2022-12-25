@@ -1,3 +1,4 @@
+using MyBox;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ public class Projectile : MonoBehaviour
     public ProjectileValues ProjectileValues = new ProjectileValues();
     TackValues tackValues;
     public ProjectileType ProjectileType { get => projectileType; }
-    public TackValues TackValues { get => tackValues; }
+    public TackValues TackValues { get => tackValues; }                       
 
     public void Awake()
     {
@@ -44,6 +45,7 @@ public class Projectile : MonoBehaviour
         switch (projectileType)
         {
             case ProjectileType.Ice:
+                GetComponent<Animator>().enabled = true;
                 break;
             case ProjectileType.Tack:
                 Tack.Start(this, ref tackValues); 
@@ -56,9 +58,6 @@ public class Projectile : MonoBehaviour
         {
             case ProjectileType.Dart:
                 Dart.Update(this);
-                break;
-            case ProjectileType.Ice:
-                Ice.Update(this);
                 break;
             case ProjectileType.Bomb:
                 Bomb.Update(this);

@@ -38,6 +38,7 @@ public struct BloonValues
     public float timer;
     public int currentWaypoint;
     public float distanceTraveled;
+    public float freezeTime;
 
     public void SetSpawnVariables(ref BloonValues values, int offset = 0)
     {
@@ -65,8 +66,18 @@ public class Bloon : MonoBehaviour
     public float DistanceTraveled { get => bloonValues.distanceTraveled; }
     public BloonType Type { get => bloonValues.bloonType; }
 
+    static readonly Color frozenColor = new Color(0.8f, 0.8f, 0.8f, 1);
+
     void Update()
     {
+        if (bloonValues.isFrozen)
+        {
+            if (Time.time < bloonValues.freezeTime)
+                return;
+            bloonValues.isFrozen = false;
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
         bloonValues.timer += Time.deltaTime;
         float v = bloonValues.timer * BloonManager.BloonSpeeds[bloonValues.bloonType].speed;
         float fraction = v / GameManager.Instance.Waypoints[bloonValues.currentWaypoint].distance;
@@ -107,9 +118,6 @@ public class Bloon : MonoBehaviour
         {                                                                                              
             case ProjectileType.Dart:
                 Dart.OnTriggerEnter(this, projectile);
-                break;
-            case ProjectileType.Ice:
-                Ice.OnTriggerEnter(this, projectile);
                 break;
             case ProjectileType.Bomb:
                 Bomb.OnTriggerEnter(this, projectile);
@@ -152,5 +160,12 @@ public class Bloon : MonoBehaviour
                 break;
         }
         Player.Instance.PlayerValues.Money++;
+    }
+
+    public void Freeze(bool upgraded)
+    {
+        bloonValues.isFrozen = true;
+        GetComponent<SpriteRenderer>().color = frozenColor;
+        bloonValues.freezeTime = Time.time + (upgraded ? IceTower.UpgradedFreezeTime : IceTower.FreezeTime);
     }
 }

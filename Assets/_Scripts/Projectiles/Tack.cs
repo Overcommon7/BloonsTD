@@ -25,6 +25,9 @@ public static class Tack
         projectile.TackValues.tacks.Remove(tack);
         
         Object.Destroy(tack.gameObject);
-        if (!bloon.IsFrozen) bloon.Pop();
+        if (bloon.IsFrozen) return;
+
+        projectile.owner.PopCount++; 
+        bloon.Pop();
     }
 }

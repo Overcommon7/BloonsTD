@@ -16,13 +16,31 @@ public class Destroy : MonoBehaviour
 
     public void ResizeCollider()
     {
+        int popCount = 0;
         foreach (var hit in Physics2D.BoxCastAll(transform.position, GetComponent<SpriteRenderer>().sprite.bounds.size, 0, Vector2.zero))
             if (hit.transform.CompareTag("Bloons"))
             {
                 Bloon bloon = hit.transform.GetComponent<Bloon>();
                 if (bloon.Type != BloonType.Black)
+                {
+                    popCount++;
                     bloon.Pop();
-            }  
+                }    
+            }
+        transform.parent.GetComponent<Tower>().PopCount += popCount;
+    }
+
+    public void FreezeInRadius()
+    {
+        var tower = GetComponentInParent<Tower>();
+        bool upgraded = tower.TowerVariables.upgraded[0];
+        foreach (var hit in Physics2D.CircleCastAll(transform.position, tower.Range * 0.5f, Vector2.zero))
+            if (hit.transform.CompareTag("Bloons"))
+            {
+                Bloon bloon = hit.transform.GetComponent<Bloon>();
+                if (bloon.Type != BloonType.White)
+                    bloon.Freeze(upgraded);                 
+            }
     }
 
     public void ResetSpeed()

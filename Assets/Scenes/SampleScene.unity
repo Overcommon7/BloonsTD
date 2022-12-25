@@ -2921,14 +2921,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f31247acb394c6847bc83fefb7840a26, type: 3}
   - {fileID: 21300000, guid: c5c08751f2ca4bc4d83e5f26bf008d93, type: 3}
   iceTowerIcons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 4eea3e46ce4829446a1a36b790814afd, type: 3}
+  - {fileID: 21300000, guid: 7bfbe6051c2bcd94eb03ad6fc24f4aa7, type: 3}
   bombTowerIcons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 850aaaba00b85264f9a548d1945e0d09, type: 3}
+  - {fileID: 21300000, guid: 31e65e96db29299438dec4571514b128, type: 3}
   SuperMonkeyIcons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 6ffe854399d03d04fb27e96f2962ecbe, type: 3}
+  - {fileID: 21300000, guid: 550c57a802f7da24fb1deb2c7f161cd5, type: 3}
 --- !u!1 &759018592
 GameObject:
   m_ObjectHideFlags: 0
@@ -6423,7 +6423,7 @@ MonoBehaviour:
   superMonkeyDescription: {fileID: 21300000, guid: 15141e7fd487c694fb3c428fdff9e671, type: 3}
   dartMonkey: {fileID: 7353076582791879989, guid: 3fcddd262b8028045929f111f9af5c05, type: 3}
   tackShooter: {fileID: 7494053012714475172, guid: 00c7af84e7b5d6a4c9793e4954fcdb41, type: 3}
-  iceTower: {fileID: 0}
+  iceTower: {fileID: 8080322520958906340, guid: 0aa7c507a93f13b4cada2149ad360a1e, type: 3}
   bombShooter: {fileID: 8149125384833431555, guid: c80dbb96c97f2f84d8ee64e37b183a2f, type: 3}
   superMonkey: {fileID: 1383706047317461224, guid: a773a1090e508db4d832a6b3e1b7b589, type: 3}
   rangeCircle: {fileID: 894869153}
