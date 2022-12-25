@@ -107,8 +107,9 @@ public class TowerPanel : MonoBehaviour
             t.name = towers[placeHolderTower.type].Item1.name;
             Player.Instance.PlayerValues.Money -= towers[placeHolderTower.type].Item1.Price;
             SoundManager.Instance.PlaySound(Sounds.PlaceTower);
-        }
-            
+            UpgradePanel.Instance.SelectedTower = t.GetComponent<Tower>();
+            UpgradePanel.Instance.TowerSelected();
+        }            
         DeletePlaceHolderTower();
     }
 

@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public struct Waypoint
 {
-    public Waypoint(Vector2 position, float distance)
+    public Waypoint(Vector2 position, float distance, float combinedDistance)
     {
         this.position = position;
         this.distance = distance;
+        this.combinedDistance = combinedDistance;
     }
 
     public Vector2 position;
     public float distance;
+    public float combinedDistance;
 }
 public class GameManager : MonoBehaviour
 {
@@ -35,9 +37,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        float combinedDistance = 0;
         distance = Vector2.Distance(waypoint.GetChild(1).position, waypoint.GetChild(0).position);
         for (int i = 0; i < waypoint.childCount - 1; i++)
-            waypoints.Add(new Waypoint(waypoint.GetChild(i).position, Vector2.Distance(waypoint.GetChild(i + 1).position, waypoint.GetChild(i).position)));
+        {
+            var d = Vector2.Distance(waypoint.GetChild(i + 1).position, waypoint.GetChild(i).position);
+            waypoints.Add(new Waypoint(waypoint.GetChild(i).position, d, combinedDistance));
+            combinedDistance += d;
+        }
+           
     }
 
     public void Start()

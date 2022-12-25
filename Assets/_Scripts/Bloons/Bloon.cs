@@ -65,9 +65,12 @@ public class Bloon : MonoBehaviour
     public bool IsFrozen { get => bloonValues.isFrozen; }
     public float DistanceTraveled { get => bloonValues.distanceTraveled; }
     public BloonType Type { get => bloonValues.bloonType; }
-
     static readonly Color frozenColor = new Color(0.8f, 0.8f, 0.8f, 1);
 
+    private void Start()
+    {
+        transform.position = transform.position.SetY(GameManager.Instance.Waypoints[0].position.y);
+    }
     void Update()
     {
         if (bloonValues.isFrozen)
@@ -77,6 +80,13 @@ public class Bloon : MonoBehaviour
             bloonValues.isFrozen = false;
             GetComponent<SpriteRenderer>().color = Color.white;
         }
+
+        if (transform.position.x < GameManager.Instance.Waypoints[0].position.x)
+        {
+            transform.Translate(BloonManager.BloonSpeeds[bloonValues.bloonType].speed * Time.deltaTime, 0, 0);
+            return;
+        }
+           
 
         bloonValues.timer += Time.deltaTime;
         float v = bloonValues.timer * BloonManager.BloonSpeeds[bloonValues.bloonType].speed;
@@ -99,13 +109,10 @@ public class Bloon : MonoBehaviour
                                           GameManager.Instance.Waypoints[bloonValues.currentWaypoint + 1].position,
                                           fraction);
 
-        float temp = 0;
-        if (bloonValues.currentWaypoint > 0)
-            temp = GameManager.Instance.Waypoints[bloonValues.currentWaypoint - 1].distance;
-
-         bloonValues.distanceTraveled = temp + Mathf.Lerp(GameManager.Instance.Waypoints[bloonValues.currentWaypoint].distance,
-                                GameManager.Instance.Waypoints[bloonValues.currentWaypoint + 1].distance,
-                                fraction);
+        bloonValues.distanceTraveled = 
+            GameManager.Instance.Waypoints[bloonValues.currentWaypoint].combinedDistance + 
+            Vector2.Distance(transform.position, GameManager.Instance.Waypoints[bloonValues.currentWaypoint].position);
+                                       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

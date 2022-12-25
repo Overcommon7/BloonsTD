@@ -88,7 +88,7 @@ public class UpgradePanel : MonoBehaviour
             popCount.text = "Pop Count: " + SelectedTower.PopCount.ToString();
     }
 
-    private void TowerSelected()
+    public void TowerSelected()
     {
         for (int i = 0; i < upgradeButtons.Count; i++)
         {
