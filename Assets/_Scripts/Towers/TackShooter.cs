@@ -48,5 +48,6 @@ public static class TackShooter
         {
             values.sellPrice = (int)((Price + Upgrades[upgradeIdx].price + (values.upgraded[1] ? Upgrades[1].price : 0)) * 0.8f);
         }
+        SoundManager.Instance.PlaySound(Sounds.LevelUp);
     }
 }

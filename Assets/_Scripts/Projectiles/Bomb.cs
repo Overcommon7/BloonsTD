@@ -12,6 +12,7 @@ public static class Bomb
     public static void OnTriggerEnter(Bloon bloon, Projectile projectile)
     {
         projectile.GetComponent<Animator>().enabled = true;
+        SoundManager.Instance.PlaySound(Sounds.Bomb);
         if (bloon.Type != BloonType.Black)
             bloon.Pop();
         projectile.owner.PopCount++;

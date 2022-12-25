@@ -31,6 +31,7 @@ public static class IceTower
             {
                 Object.Instantiate(values.projectile, transform).gameObject.SetActive(true);
                 values.timeSinceLastShot = 0;
+                SoundManager.Instance.PlaySound(Sounds.Ice);
                 return;
             }
         }
@@ -48,5 +49,6 @@ public static class IceTower
         {
             values.sellPrice = (int)((Price + Upgrades[upgradeIdx].price + (values.upgraded[1] ? Upgrades[1].price : 0)) * 0.8f);
         }
+        SoundManager.Instance.PlaySound(Sounds.LevelUp);
     }
 }

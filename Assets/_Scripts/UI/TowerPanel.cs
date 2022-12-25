@@ -106,6 +106,7 @@ public class TowerPanel : MonoBehaviour
             t.transform.position = placeHolderTower.obj.transform.position;
             t.name = towers[placeHolderTower.type].Item1.name;
             Player.Instance.PlayerValues.Money -= towers[placeHolderTower.type].Item1.Price;
+            SoundManager.Instance.PlaySound(Sounds.PlaceTower);
         }
             
         DeletePlaceHolderTower();

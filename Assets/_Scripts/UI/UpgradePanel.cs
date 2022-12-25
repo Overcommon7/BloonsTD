@@ -147,6 +147,7 @@ public class UpgradePanel : MonoBehaviour
         Player.Instance.PlayerValues.Money += SelectedTower.TowerVariables.sellPrice;
         Destroy(SelectedTower.gameObject);
         SelectedTower = null;
+        SoundManager.Instance.PlaySound(Sounds.Selltower);
         NoTowerSelected();
     }
 }

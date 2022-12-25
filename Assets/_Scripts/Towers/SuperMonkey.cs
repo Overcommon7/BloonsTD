@@ -47,5 +47,6 @@ public static class SuperMonkey
             values.range = RangeIncrease;
             values.sellPrice = (int)((Price + Upgrades[upgradeIdx].price + (values.upgraded[0] ? Upgrades[0].price : 0)) * 0.8f);
         }
+        SoundManager.Instance.PlaySound(Sounds.LevelUp);
     }
 }

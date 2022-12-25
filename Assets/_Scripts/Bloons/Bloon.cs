@@ -160,6 +160,7 @@ public class Bloon : MonoBehaviour
                 break;
         }
         Player.Instance.PlayerValues.Money++;
+        SoundManager.Instance.PlaySound(Sounds.Pop);
     }
 
     public void Freeze(bool upgraded)
