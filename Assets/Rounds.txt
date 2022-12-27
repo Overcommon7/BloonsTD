@@ -1,0 +1,159 @@
+s r 15 1
+RoundEnd 1
+s r 25 1
+RoundEnd 2
+s b 5 0.9
+s r 24 0.9
+RoundEnd 3
+s b 24 0.8
+s r 10 0.8
+RoundEnd 4
+s b 25 0.8
+s r 30 0.7
+RoundEnd 5
+s g 15 0.7
+RoundEnd 6
+s b 75 0.6
+RoundEnd 7
+s r 70 0.6
+s b 70 0.6
+RoundEnd 8
+s g 15 0.6
+s b 50 0.5
+RoundEnd 9
+s g 35 0.5
+RoundEnd 10
+s y 15 0.5
+RoundEnd 11
+s b 25
+w 1.3
+s y 3
+s b 25
+s g 25
+RoundEnd 12
+s g 28
+s b 75
+s r 40
+RoundEnd 13
+s y 28 0.35
+RoundEnd 14
+s b 30 
+s g 60 0.3
+RoundEnd 15
+s b 70
+s g 75
+RoundEnd 16
+s g 45
+s b 140
+RoundEnd 17
+s y 27
+s g 25
+s b 30
+RoundEnd 18
+s g 90
+RoundEnd 19
+s y 48
+s g 24
+RoundEnd 20
+s y 35
+s g 85
+s b 10
+RoundEnd 21
+s y 45
+RoundEnd 22
+s y 64
+s g 35
+RoundEnd 23
+s y 42
+s g 50
+s b 30
+RoundEnd 24
+s y 53
+s g 70
+RoundEnd 25
+s y 85
+RoundEnd 26
+s B 20
+RoundEnd 27
+s y 55
+s g 45
+RoundEnd 28
+s y 125
+s B 19
+RoundEnd 29
+s g 250
+RoundEnd 30
+s B 27
+s g 55
+s b 10
+RoundEnd 31
+s B 23
+s y 20
+s g 25
+RoundEnd 32
+s y 150
+RoundEnd 33
+s B 25
+s y 35
+s g 35
+RoundEnd 34
+s y 110
+s g 85
+RoundEnd 35
+s B 35
+s y 115
+RoundEnd 36
+s B 59
+RoundEnd 37
+s y 220
+RoundEnd 38
+s B 40
+s y 50
+s g 50
+s b 50
+s r 50
+RoundEnd 39
+s B 80
+RoundEnd 40
+s W 40
+s B 20
+RoundEnd 41
+s w 30
+s B 30
+s w 20
+RoundEnd 42
+s w 40
+s B 60
+s y 150
+RoundEnd 43
+s B 120
+RoundEnd 44
+s w 120
+RoundEnd 45
+s B 30
+s w 60
+w 0.4
+s B 30
+s w 1
+s y 59
+RoundEnd 46
+s w 20
+w 2
+s B 35
+w 1
+s w 20
+w 1
+s B 35
+w 2
+s y 79
+RoundEnd 47
+s w 80
+s B 80
+s y 70
+RoundEnd 48
+s w 70
+s B 80
+s y 99
+RoundEnd 49
+s w 100
+s B 99

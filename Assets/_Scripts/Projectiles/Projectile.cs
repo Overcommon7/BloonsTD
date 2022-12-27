@@ -19,11 +19,13 @@ public struct ProjectileValues
 {
     public int pierce;
     public int speed;
+    public bool isValid;
 }
 
 public struct TackValues
 {
     public List<Transform> tacks;
+    public Dictionary<int, bool> isValid;
 }
 public class Projectile : MonoBehaviour
 {
@@ -38,6 +40,7 @@ public class Projectile : MonoBehaviour
     {
         if (projectileType.Equals(ProjectileType.Bomb))
             GetComponent<Animator>().enabled = false;
+        ProjectileValues.isValid = true;
     }
     public void Start()
     {

@@ -13,9 +13,6 @@ public static class Bomb
     {
         projectile.GetComponent<Animator>().enabled = true;
         SoundManager.Instance.PlaySound(Sounds.Bomb);
-        if (bloon.Type != BloonType.Black)
-            bloon.Pop();
-        projectile.owner.PopCount++;
     }
 }
 

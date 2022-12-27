@@ -19,7 +19,7 @@ public class TowerPanel : MonoBehaviour
     public static TowerPanel Instance;
     [SerializeField] Image description;
     public Image Description { get => description; }
-    static Dictionary<TowerType, Tuple<Tower, Sprite>> towers = null;
+    Dictionary<TowerType, Tuple<Tower, Sprite>> towers = new Dictionary<TowerType, Tuple<Tower, Sprite>>();
 
     [SerializeField] Sprite dartMonkeyDescription;
     [SerializeField] Sprite tackShooterDescription;

@@ -7,6 +7,7 @@ TagManager:
   - Bloons
   - Towers
   - Projectiles
+  - Map
   layers:
   - Default
   - TransparentFX

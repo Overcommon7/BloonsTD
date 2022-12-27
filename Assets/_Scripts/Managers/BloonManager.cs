@@ -13,8 +13,8 @@ public class BloonManager : MonoBehaviour
     [SerializeField] SpriteRenderer PoppedBloon;
 
     public static BloonManager Instance;
-    public static Dictionary<BloonType, BloonVariables> BloonSpeeds = null;
-    public static Dictionary<BloonType, SpriteRenderer> BloonSprites = null; 
+    public Dictionary<BloonType, BloonVariables> BloonSpeeds = new Dictionary<BloonType, BloonVariables>();
+    public Dictionary<BloonType, SpriteRenderer> BloonSprites = new Dictionary<BloonType, SpriteRenderer>(); 
 
     private void Awake()
     {

@@ -15,7 +15,7 @@ public struct PlayerValues
     [SerializeField] TextMeshProUGUI livesText;
 
     public int Money { get => money; set { money = value; moneyText.text = money.ToString(); } }
-    public int Lives { get => lives; set { lives = value; livesText.text = lives.ToString(); } }
+    public int Lives { get => lives; set { lives = value; livesText.text = lives.ToString(); if (lives <= 0) GameManager.Instance.OnGameOver(); } }
 
 }
 public class Player : MonoBehaviour
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        PlayerValues.Money = 100000; 
+        PlayerValues.Money = PlayerValues.Money; 
         PlayerValues.Lives = 40; 
     }
 

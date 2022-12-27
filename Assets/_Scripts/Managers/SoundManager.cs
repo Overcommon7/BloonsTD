@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
     List<AudioClip> sounds = new List<AudioClip>();
     [SerializeField] AudioSource SFXSource;
-    [SerializeField] AudioSource PopSource;
+    AudioSource[] PopSources;
     [SerializeField] AudioClip[] popSounds = new AudioClip[4];
     [SerializeField] AudioClip levelUp;
     [SerializeField] AudioClip iceTower;
@@ -33,6 +33,10 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        PopSources = new AudioSource[8];
+        for (int i = 0; i < PopSources.Length; i++)
+            PopSources[i] = gameObject.AddComponent<AudioSource>();
     }
 
     private void OnApplicationQuit()
@@ -54,7 +58,13 @@ public class SoundManager : MonoBehaviour
                 SFXSource.PlayOneShot(placeTower);
                 break;
             case Sounds.Pop:
-                PopSource.PlayOneShot(popSounds.GetRandom());
+                foreach (var source in PopSources)
+                    if (!source.isPlaying)
+                    {
+                        source.clip = popSounds.GetRandom();
+                        source.Play();
+                        break;
+                    }
                 break;
             case Sounds.Selltower:
                 SFXSource.PlayOneShot(sellTower);

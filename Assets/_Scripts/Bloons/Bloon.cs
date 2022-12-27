@@ -46,7 +46,7 @@ public struct BloonValues
         if (values.bloonType == BloonType.Black || values.bloonType == BloonType.White)
             type = BloonType.Yellow;
 
-        timer = values.timer * BloonManager.BloonSpeeds[values.bloonType].speed / BloonManager.BloonSpeeds[type].speed;
+        timer = values.timer * BloonManager.Instance.BloonSpeeds[values.bloonType].speed / BloonManager.Instance.BloonSpeeds[type].speed;
         currentWaypoint = values.currentWaypoint;
 
         if (offset == 0) return;
@@ -70,6 +70,7 @@ public class Bloon : MonoBehaviour
     private void Start()
     {
         transform.position = transform.position.SetY(GameManager.Instance.Waypoints[0].position.y);
+        RoundManager.Instance.Bloons++;
     }
     void Update()
     {
@@ -83,13 +84,13 @@ public class Bloon : MonoBehaviour
 
         if (transform.position.x < GameManager.Instance.Waypoints[0].position.x)
         {
-            transform.Translate(BloonManager.BloonSpeeds[bloonValues.bloonType].speed * Time.deltaTime, 0, 0);
+            transform.Translate(BloonManager.Instance.BloonSpeeds[bloonValues.bloonType].speed * Time.deltaTime, 0, 0);
             return;
         }
            
 
         bloonValues.timer += Time.deltaTime;
-        float v = bloonValues.timer * BloonManager.BloonSpeeds[bloonValues.bloonType].speed;
+        float v = bloonValues.timer * BloonManager.Instance.BloonSpeeds[bloonValues.bloonType].speed;
         float fraction = v / GameManager.Instance.Waypoints[bloonValues.currentWaypoint].distance;
 
         if (fraction >= 1f)
@@ -146,23 +147,23 @@ public class Bloon : MonoBehaviour
                 return;
             case BloonType.Red:
                 bloonValues.bloonType -= 1;
-                Instantiate(BloonManager.BloonSprites[BloonType.Popped].transform).position = transform.position;
+                Instantiate(BloonManager.Instance.BloonSprites[BloonType.Popped].transform).position = transform.position;
                 Destroy(gameObject);
                 break;
             case BloonType.Blue:
             case BloonType.Green:
             case BloonType.Yellow:
-                GetComponent<SpriteRenderer>().sprite = BloonManager.BloonSprites[bloonValues.bloonType - 1].sprite;
+                GetComponent<SpriteRenderer>().sprite = BloonManager.Instance.BloonSprites[bloonValues.bloonType - 1].sprite;
                 GetComponent<BoxCollider2D>().size = GetComponent<SpriteRenderer>().sprite.bounds.size;
                 var temp = bloonValues;
                 bloonValues.bloonType -= 1;
                 bloonValues.SetSpawnVariables(ref temp);               
-                Instantiate(BloonManager.BloonSprites[BloonType.Popped].transform, transform);
+                Instantiate(BloonManager.Instance.BloonSprites[BloonType.Popped].transform, transform);
                 break;
             case BloonType.Black:
             case BloonType.White:
-                Instantiate(BloonManager.BloonSprites[BloonType.Yellow].transform).GetComponent<Bloon>().bloonValues.SetSpawnVariables(ref bloonValues, 1);
-                Instantiate(BloonManager.BloonSprites[BloonType.Yellow].transform).GetComponent<Bloon>().bloonValues.SetSpawnVariables(ref bloonValues, -1);
+                Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform).GetComponent<Bloon>().bloonValues.SetSpawnVariables(ref bloonValues, 1);
+                Instantiate(BloonManager.Instance.BloonSprites[BloonType.Yellow].transform).GetComponent<Bloon>().bloonValues.SetSpawnVariables(ref bloonValues, -1);
                 Destroy(gameObject);
                 break;
         }
@@ -175,5 +176,10 @@ public class Bloon : MonoBehaviour
         bloonValues.isFrozen = true;
         GetComponent<SpriteRenderer>().color = frozenColor;
         bloonValues.freezeTime = Time.time + (upgraded ? IceTower.UpgradedFreezeTime : IceTower.FreezeTime);
+    }
+
+    private void OnDestroy()
+    {
+        RoundManager.Instance.Bloons--;
     }
 }

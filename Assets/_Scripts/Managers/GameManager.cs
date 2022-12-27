@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public struct Waypoint
@@ -51,8 +52,34 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         RangeCircle.gameObject.SetActive(false);
-        foreach (var obj in GameObject.FindGameObjectsWithTag("EditorOnly"))
+        foreach (var obj in GameObject.FindGameObjectsWithTag("Map"))
             obj.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void ReloadScene()
+    {
+        UIManager.Instance = null;
+        BloonManager.Instance = null;
+        Player.Instance = null;
+        RoundManager.Instance = null;
+        SoundManager.Instance = null;
+
+        StatsPanel.Instance = null;
+        TowerPanel.Instance = null;
+        UpgradePanel.Instance = null;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+    }
+
+    public void OnGameOver()
+    {
+        RoundManager.Instance.ForceRoundEnd();
+        UIManager.Instance.OngameOver();
+    }
+
+    public void OnWin()
+    {
+        UIManager.Instance.OnWin();
     }
 
     private void OnApplicationQuit()
